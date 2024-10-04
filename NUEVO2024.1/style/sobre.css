@@ -1,0 +1,158 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://i.pinimg.com/564x/92/53/cc/9253ccb5f1937961d17e2dfbf2871d50.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
+header {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 5px solid #ff5f6d;
+    animation: headerAnimation 1s ease-in-out;
+}
+
+@keyframes headerAnimation {
+    from {
+        opacity: 0;
+        top: -70px;
+    }
+    to {
+        opacity: 1;
+        top: 0;
+    }
+}
+
+.interior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.navegacion ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navegacion ul li {
+    margin-right: 20px;
+}
+
+.navegacion ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+section {
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.vaino {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.mision, .vision, .quienesomos {
+    margin-bottom: 20px;
+}
+
+.img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.h1 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.p {
+    font-size: 1em;
+}
+
+footer {
+background-color: #1a1a1a;
+color: #fff;
+padding: 10px 0;
+box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+border-top: 5px solid #ff5f6d;
+}
+
+.footer-container {
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+padding: 0 10px;
+}
+
+.footer-section {
+flex: 1;
+min-width: 150px;
+margin: 5px;
+}
+
+.footer-section h4 {
+margin: 0 0 8px;
+font-size: 1em;
+border-bottom: 2px solid #ff5f6d;
+padding-bottom: 4px;
+}
+
+.footer-section ul {
+list-style: none;
+padding: 0;
+margin: 0;
+font-size: 0.9em;
+}
+
+.footer-section ul li {
+margin-bottom: 5px;
+}
+
+.footer-section a {
+color: #fff;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.footer-section a:hover {
+color: #ff5f6d;
+}
+
+.footer-section select {
+background-color: rgba(0, 0, 0, 0.7);
+color: white;
+border: 1px solid white;
+padding: 3px;
+border-radius: 5px;
+margin-right: 5px;
+font-size: 0.9em;
+}
+
+.footer-bottom {
+text-align: center;
+padding: 5px 10px;
+border-top: 1px solid #333;
+background-color: #1a1a1a;
+font-size: 0.8em;
+}

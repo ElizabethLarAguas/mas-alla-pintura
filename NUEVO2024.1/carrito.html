@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>MAS ALLA DE LA PINTURA</title>
+    <link rel="stylesheet" href="style/carrito.css" />
+    <style>
+      /* Reset básico */
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      /* Estilo general del cuerpo */
+      body {
+          font-family: 'Arial', sans-serif;
+          line-height: 1.6;
+          background: linear-gradient(to right, #32a2fd, #40d2ffec);
+          color: #fff;
+          padding-bottom: 50px;
+          overflow-x: hidden;
+      }
+
+      /* Estilos del encabezado */
+      header {
+          background-color: #1a1a1a;
+          color: #fff;
+          padding: 15px 0;
+          box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          border-bottom: 5px solid #ff5f6d;
+      }
+
+      header .interior {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+      }
+
+      header .logo img {
+          height: 60px;
+          animation: logoAnimation 2s infinite alternate;
+      }
+
+      @keyframes logoAnimation {
+          0% { transform: rotate(0); }
+          100% { transform: rotate(360deg); }
+      }
+
+      header .navegacion ul {
+          list-style: none;
+          display: flex;
+      }
+
+      header .navegacion ul li {
+          margin: 0 15px;
+      }
+
+      header .navegacion ul li a {
+          color: #fff;
+          text-decoration: none;
+          padding: 10px 15px;
+          border-radius: 5px;
+          transition: background-color 0.3s, color 0.3s, transform 0.3s;
+      }
+
+      header .navegacion ul li a:hover {
+          background-color: #ff5f6d;
+          color: #fff;
+          transform: scale(1.1);
+      }
+
+      /* Estilos de la sección */
+      section {
+          padding: 50px 0;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+          max-width: 1200px;
+          margin: 40px auto;
+          padding: 30px;
+      }
+
+      section h2 {
+          text-align: center;
+          margin-bottom: 50px;
+          color: #fff;
+          font-size: 3em;
+      }
+
+      .container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+      }
+
+      .grid {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 20px;
+      }
+
+      .items {
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
+          padding: 20px;
+          margin: 20px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+          transition: transform 0.3s;
+          flex: 1 1 calc(33.333% - 40px);
+      }
+
+      .items img {
+          width: 100%;
+          border-radius: 10px;
+          transition: transform 0.3s;
+      }
+
+      .items img:hover {
+          transform: scale(1.1);
+      }
+
+      .items h3 {
+          margin: 15px 0;
+          text-align: center;
+          font-size: 1.5em;
+      }
+
+      .items p {
+          text-align: center;
+          color: #eee;
+      }
+
+      .precio {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 10px;
+      }
+
+      .precio p {
+          background: #ff5f6d;
+          padding: 10px;
+          border-radius: 5px;
+          font-size: 1.2em;
+      }
+
+      .items input[type="number"] {
+          width: 50px;
+          padding: 10px;
+          margin-top: 10px;
+          border: none;
+          border-radius: 5px;
+          text-align: center;
+      }
+
+      .items button {
+          background: #ff5f6d;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          margin-top: 10px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s, transform 0.3s;
+      }
+
+      .items button:hover {
+          background-color: #ff5f6d;
+          transform: scale(1.1);
+      }
+
+      /* Estilos del carrito */
+      .carrito {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: rgba(255, 255, 255, 0.8);
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+          max-width: 300px; /* Ajusta el ancho según sea necesario */
+          z-index: 1001; /* Asegúrate de que esté por encima de otros elementos */
+          display: none; /* Inicialmente oculto */
+      }
+
+      /* Estilos del pie de página */
+      footer {
+          background-color: #1a1a1a;
+          color: #fff;
+          padding: 30px 0;
+          text-align: center;
+      }
+
+      footer table {
+          width: 100%;
+      }
+
+      footer table tr td {
+          padding: 10px;
+          vertical-align: top;
+      }
+
+      footer table tr td ul {
+          list-style: none;
+          padding: 0;
+      }
+
+      footer table tr td ul li {
+          margin-bottom: 10px;
+      }
+
+      footer table tr td ul li h4 {
+          font-size: 1.2em;
+          color: #ff5f6d;
+      }
+
+      footer a {
+          color: #ff5f6d;
+          text-decoration: none;
+          transition: color 0.3s;
+      }
+
+      footer a:hover {
+          color: #fafafa;
+      }
+      h4#iva{
+        color:rgb(13, 15, 15)
+      }
+      .open-cart-button {
+        display: block;
+        background: #ff5f6d;
+        width: 100px;
+        height: 50px;
+      }
+      p{
+      color:#1a1a1a
+      }
+  </style>
+
+  </head>
+  <body>
+    <header>
+     
+      <div class="interior">
+       
+        <a href="#" class="logo"><img src="image (1).png" alt="Logo"></a>
+       
+        <nav class="navegacion">
+          <ul>
+            <li><a href="servicio.html">servicios</a></li>
+            <li><a href="carrito.html">carrito</a></li>
+            <li><a href="caralogo.html">catalogo</a></li>
+            <li><a href="sobre.html">sobre</a></li>
+            <li><a href="iniciosesion.html">mi cuenta</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+        <nav><h2>Carrito de Compras</h2></nav>
+        <div class="grid">
+          <div class="items">
+            <img
+              src="https://i.pinimg.com/236x/de/a3/69/dea369f19086dbc006dac57637e1e2b1.jpg"
+            />
+            <div class="mascadores">
+              <h3>Marcadores uniPOSCA</h3>
+              <p>Elizabeth Lara</p>
+              <div class="precio">
+                <p>$15,000</p>
+              </div>
+              <input
+                type="number"
+                name=""
+                id="unidades1"
+                data-producto="1"
+                min="0"
+              />
+              <button onclick="agregarAlCarrito(1)">Agregar Unidades</button>
+            </div>
+          </div>
+          <div class="items">
+            <img
+              src="https://i.pinimg.com/236x/b3/b9/55/b3b95596e6719b5ed7624097b8f95801.jpg"
+            />
+            <div class="pinturas">
+              <h3>Juego De Pintura</h3>
+              <p>Jisel Rojas</p>
+              <div class="precio">
+                <p>$19,000</p>
+                <p>$23,000</p>
+              </div>
+              <input
+                type="number"
+                name=""
+                id="unidades2"
+                data-producto="2"
+                min="0"
+              />
+              <button onclick="agregarAlCarrito(2)">Agregar Unidades</button>
+            </div>
+          </div>
+          <div class="items">
+            <img
+              src="https://i.pinimg.com/236x/14/43/f8/1443f88ea312fe0feba5d8bdf9b30fa6.jpg"
+            />
+            <div class="pinceles">
+              <h3>Juego De Pinceles</h3>
+              <p>Juan Martinez</p>
+              <div class="precio">
+                <p>$99,900</p>
+                <p>$130,000</p>
+              </div>
+              <input
+                type="number"
+                name=""
+                id="unidades3"
+                data-producto="3"
+                min="0"
+              />
+              <button onclick="agregarAlCarrito(3)">Agregar Unidades</button>
+            </div>
+          </div>
+          <div class="items">
+            <img
+              src="https://i.pinimg.com/236x/02/7c/ac/027cac39c3e74a654656effdc0620656.jpg"
+            />
+            <div class="paleta">
+              <h3>Paleta de pinturas</h3>
+              <p>Jisel Rojas</p>
+              <div class="precio">
+                <p>$99,900</p>
+                <p>$130,000</p>
+              </div>
+              <input
+                type="number"
+                name=""
+                id="unidades4"
+                data-producto="4"
+                min="0"
+              />
+              <button onclick="agregarAlCarrito(4)">Agregar Unidades</button>
+            </div>
+          </div>
+          <div class="items">
+            <img
+              src="https://i.pinimg.com/236x/98/17/5a/98175af5686307b6ed2a1641f4d65e97.jpg"
+            />
+            <div class="tripode">
+              <h3>Trípode</h3>
+              <p>lizzy</p>
+              <div class="precio">
+                <p>$45,000</p>
+              </div>
+              <input
+                type="number"
+                name=""
+                id="unidades5"
+                data-producto="5"
+                min="0"
+              />
+              <button onclick="agregarAlCarrito(5)">Agregar Unidades</button>
+            </div>
+          </div>
+          <div class="items">
+            <img
+              src="totenart-lienzo-derwnet_1.jpg"
+            />
+            <div class="lienzo">
+              <h3>Lienzo para Pintura</h3>
+              <p>mendez mendez</p>
+              <div class="precio">
+                <p>$25,000</p>
+              </div>
+              <input
+                type="number"
+                name=""
+                id="unidades7"
+                data-producto="7"
+                min="0"
+              />
+              <button onclick="agregarAlCarrito(7)">Agregar Unidades</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Carrito de Compras -->
+<div class="carrito" id="carrito">
+  <nav>
+      <h2>Resumen del Carrito</h2>
+      <button onclick="toggleCarrito()">Cerrar</button>
+  </nav>
+  <div id="carrito-items">
+      <!-- Aquí se mostrarán los productos en el carrito -->
+  </div>
+  <div class="carrito-total">
+      <h3>Total:</h3>
+      <h3 id="total-precio">$0</h3>
+  </div>
+  <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+</div>
+
+
+  <footer>
+    <table>
+      <tr>
+        <td>
+        <ul>
+        <h4><li>HORARIO </li></h4>
+        <h4><li> De martes a domingo  </li></h4>
+        <h4><li>10:00am</li></h4>
+        <h4><li>1:00pm</li></h4>
+        <h4><li>10:00pm</li></h4>
+        </ul>
+        </td>
+      <td> 
+        <ul>
+          <h4><li>Telefono:</li></h4>
+          <h4><li>3223282069</li></h4>
+          <h4><li>Avenida Abandoibarra, 2 48009 Bilbao</li></h4>
+          <h4><li>Propietarios de Hoteles</li></h4>
+          <h4><li>Socios</li></h4>
+        </ul>
+    </td>
+      <td> 
+        <ul>
+          <h4> <li>EL MUSEO </li></h4>
+          <h4><li>Aserca Del Museo</li></h4>
+          <h4><li>Contratacion</li></h4>
+          <h4><li>Area De Prensa</li></h4>
+        </ul>
+      </td>
+      <td> 
+        <ul>
+          <h4> <li>Region/Divisa</li></h4>
+          <select name="City">
+            <option value="Italia">Italia</option>
+            <option value="Ecuador">Ecuador </option>
+            <option value="Mexico">Mexico </option> </p>
+            <option value="Nueva York">Nueva York</option>
+            <option value="España">España</option> 
+           </select> 
+           <p>
+           <select name="MONEY">
+            <option value="Italia">Euro</option>
+            <option value="Ecuador">Dolar </option>
+            <option value="Mexico">mxn</option> </p>
+            <option value="Nueva York">Dolar</option>
+            <option value="España">Euro</option>
+           </select> 
+          </p>  
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td id="hola"> <a href="https://www.guggenheim-bilbao.eus/acerca-del-museo"><h4> acerca-del-museo</td></h4>
+      <td id="como"> <a href="https://www.guggenheim-bilbao.eus/contratacion"><h4> Contratacion</td></h4>
+      <td id="esta"> <a href="https://prensa.guggenheim-bilbao.eus/"><h4> Area de Prensa</td></h4>
+      <td id="HOLA"> <a href="https://www.guggenheim-bilbao.eus/sabias-que/mas-alla-de-la-pintura"><h4>@2023 MAS ALLA QUE LA PINTURA</td></h4>
+    </tr>
+    <tr>
+    <td id="papa"colspan="4"> <li>  </li> </td> 
+    </tr>
+  </table>
+  </footer>
+  <script>
+    const carrito = [];
+
+    function agregarAlCarrito(productoId) {
+    const unidades = parseInt(document.getElementById(`unidades${productoId}`).value);
+    if (unidades <= 0) return;
+
+    const productos = [
+        { id: 1, nombre: 'Marcadores uniPOSCA', precio: 15000 },
+        { id: 2, nombre: 'Juego De Pintura', precio: 19000 },
+        { id: 3, nombre: 'Pinceles - Set', precio: 10000 },
+        { id: 4, nombre: "Paleta de pinturas", vendedor: "Jisel Rojas", precio: 99900 },
+        { id: 5, nombre: "Trípode", vendedor: "lizzy", precio: 45000 },
+        { id: 6, nombre: "Papel para Acuarela", vendedor: "jiseka", precio: 30000 },
+        { id: 7, nombre: "Lienzo para Pintura", vendedor: "mendez mendez", precio: 25000 }
+    ];
+
+    const producto = productos.find(p => p.id === productoId);
+    const item = { ...producto, unidades };
+    carrito.push(item);
+    mostrarCarrito();
+
+    // Abrir el carrito al agregar un producto
+    toggleCarrito();
+}
+
+    function mostrarCarrito() {
+        const carritoItems = document.getElementById("carrito-items");
+        const totalPrecio = document.getElementById("total-precio");
+        const iva = document.getElementById("iva");
+
+        carritoItems.innerHTML = carrito.map(item => 
+            `<p>${item.nombre} - Unidades: ${item.unidades} - Precio: $${item.precio * item.unidades}</p>`
+        ).join("");
+
+        const total = carrito.reduce((acc, item) => acc + (item.precio * item.unidades), 0);
+        totalPrecio.textContent = `$${total}`;
+    }
+
+    function vaciarCarrito() {
+        carrito.length = 0; // Vacía el carrito
+        mostrarCarrito();
+    }
+
+    function toggleCarrito() {
+        const carritoDiv = document.getElementById("carrito");
+        if (carritoDiv.style.display === "none" || carritoDiv.style.display === "") {
+            carritoDiv.style.display = "block";
+        } else {
+            carritoDiv.style.display = "none";
+        }
+    }
+
+    // Muestra el carrito al cargar la página
+    window.onload = function () {
+        mostrarCarrito();
+        document.getElementById("carrito").style.display = "none"; // Ocultar el carrito al inicio
+    };
+</script>
+  </body>
+</html>

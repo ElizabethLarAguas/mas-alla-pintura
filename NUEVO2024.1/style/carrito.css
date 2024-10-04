@@ -1,0 +1,261 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo general del cuerpo */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(to right, #32a2fd, #40d2ffec);
+    color: #fff;
+    padding-bottom: 50px;
+    overflow-x: hidden;
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 5px solid #ff5f6d;
+}
+
+header .interior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .logo img {
+    height: 60px;
+    animation: logoAnimation 2s infinite alternate;
+}
+
+@keyframes logoAnimation {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+header .navegacion ul {
+    list-style: none;
+    display: flex;
+}
+
+header .navegacion ul li {
+    margin: 0 15px;
+}
+
+header .navegacion ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+header .navegacion ul li a:hover {
+    background-color: #ff5f6d;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Estilos de la sección */
+section {
+    padding: 50px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+  
+}
+
+@keyframes sectionAnimation {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #fff;
+    font-size: 3em;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.items {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+    flex: 1 1 calc(33.333% - 40px);
+}
+
+.items img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.items img:hover {
+    transform: scale(1.1);
+}
+
+.items h3 {
+    margin: 15px 0;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.items p {
+    text-align: center;
+    color: #eee;
+}
+
+.precio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.precio p {
+    background: #ff5f6d;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.items input[type="number"] {
+    width: 50px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.items button {
+    background: #ff5f6d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.items button:hover {
+    background-color: #ff5f6d;
+    transform: scale(1.1);
+}
+
+/* Estilos del carrito */
+.carrito {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.carrito h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.carrito-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.carrito-total h3 {
+    color: #ff5f6d;
+}
+
+
+.carrito button {
+    display: block;
+    background: #ff5f6d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px auto 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.carrito button:hover {
+    background-color: #ff5f6d;
+    transform: scale(1.1);
+}
+
+/* Estilos del pie de página */
+footer {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}
+
+footer table {
+    width: 100%;
+}
+
+footer table tr td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+footer table tr td ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer table tr td ul li {
+    margin-bottom: 10px;
+}
+
+footer table tr td ul li h4 {
+    font-size: 1.2em;
+    color: #ff5f6d;
+}
+
+footer a {
+    color: #ff5f6d;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #fafafa;
+}
