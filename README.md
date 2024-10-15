@@ -1,2 +1,3 @@
 #Mas alla de la pintura 
-Pagina para la venta y compra de productos (Artes)
+
+Este proyecto de pintura explora la conexión entre arte y naturaleza, utilizando colores suaves y formas orgánicas para transmitir tranquilidad y armonía con el entorno.
